@@ -1,39 +1,36 @@
 import React, { Component } from 'react';
 // import settings from '../settings.json'
 
-
 class News extends Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            // settings: this.props.settings
-        }
+  constructor (props) {
+    super(props)
+    this.state = {
+      // settings: this.props.settings
     }
+  }
 
-    componentDidMount() {
-    }
+  componentDidMount () {
+  }
 
-    componentWillUnmount() {
-    }
+  componentWillUnmount () {
+  }
 
-    componentWillReceiveProps(nextProps) {
-        // if (nextProps.settings !== this.state.settings) {
-        //   this.setState({ settings: nextProps.settings });
-        // }
-    }
+  componentWillReceiveProps (nextProps) {
+    // if (nextProps.settings !== this.state.settings) {
+    //   this.setState({ settings: nextProps.settings });
+    // }
+  }
 
-    render() {
-
-        return (
-            <div className="News">
+  render () {
+    return (
+      <div className='News'>
                 mimi
-                {/* <div></div>
+        {/* <div></div>
                 <div>{this.state.settings.title}</div>
                 <div></div> */}
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 
 export default News

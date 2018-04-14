@@ -1,1 +1,6 @@
-npx create-react-app present-react
+yarn create @neutrinojs/project present-react
+
+yarn add prayer-timetable-react
+
+yarn lint --fix
+yarn start
