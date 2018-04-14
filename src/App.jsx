@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import {Helmet} from "react-helmet";
 
 import Poster from './components/Poster'
 import News from './components/News'
@@ -80,6 +81,12 @@ export default class PresentApp extends Component {
   render () {
     return (
       <div className='PresentApp'>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>My Title</title>
+          <script src="js/uikit.min.js"></script>
+          <script src="js/uikit-icons.min.js"></script>
+        </Helmet>
         <Poster
           className='Poster'
           about={this.state.about}
