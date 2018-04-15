@@ -6,6 +6,7 @@ import News from './components/News'
 import Timetable from './components/Timetable/App'
 
 import './style/normalize.css'
+// import './style/uikit.min.css'
 import './style/App.css'
 
 export default class PresentApp extends Component {
@@ -84,8 +85,27 @@ export default class PresentApp extends Component {
         <Helmet>
           <meta charSet="utf-8" />
           <title>My Title</title>
-          <script src="js/uikit.min.js"></script>
-          <script src="js/uikit-icons.min.js"></script>
+          {/* <script src="js/uikit.min.js"></script>
+          <script src="js/uikit-icons.min.js"></script> */}
+          <title>Present</title>
+          {/* <link rel="stylesheet" href="/css/normalize.css" />
+          <link rel="stylesheet" href="/css/uikit.min.css" />
+          <link rel="stylesheet" href="/css/css3clock.css" />
+          <link rel="stylesheet" href="/css/open-sans.css" />
+          <link rel="stylesheet" href="/css/changa.css" />
+          <link rel="stylesheet" href="/cssext/style.css" /> */}
+          {/* <style type="text/css">body, .uk-table th {
+              font-family: "Open Sans",'Helvetica Neue',Arial,Helvetica,sans-serif;
+              font-size: 24px;
+          }
+          .uk-heading-hero {
+              font-size: 5rem;
+              font-weight: 500;
+          }
+          h2 {
+              font-size: 90%;
+          }
+          </style> */}
         </Helmet>
         <Poster
           className='Poster'
