@@ -1,0 +1,12 @@
+yarn create @neutrinojs/project present-react
+
+yarn add prayer-timetable-react
+
+yarn lint --fix
+yarn start
+
+
+
+
+http://grommet.io/
+https://react-bootstrap.github.io/components/carousel/
