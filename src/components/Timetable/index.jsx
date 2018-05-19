@@ -28,7 +28,7 @@ class Timetable extends Component {
     this.state = {
       timetable: deftimetable,
       // settings: { join: '' },
-      settings: {},
+      settings: { jamaahmethods: [], jamaahoffsets: [], hijrioffset: 0 },
       dst: 0,
       date: new Date(),
       day: {},
@@ -104,26 +104,25 @@ class Timetable extends Component {
       tomorrow: this.state.prayers.newtomorrow
     })
 
-    if (moment().isBetween(this.state.jummuahTime, this.state.jummuahTime.clone().add(1, 'hour'))) {
-      this.setState({
-        overlayActive: true,
-        overlayTitle: 'Jummuah Prayer'
-      })
-    }
-    else if (moment().format('iM') === '9' &&
-    //   this.state.prayers.current.name === 'asr' &&
-      moment().isBetween(this.state.taraweehTime, this.state.taraweehTime.clone().add(2, 'hour'))) {
-      this.setState({
-        overlayActive: true,
-        overlayTitle: 'Taraweeh Prayer'
-      })
-    }
-    else {
-      this.setState({
-        overlayActive: false,
-        overlayTitle: ' ... '
-      })
-    }
+    // if (moment().isBetween(this.state.jummuahTime, this.state.jummuahTime.clone().add(1, 'hour'))) {
+    //   this.setState({
+    //     overlayActive: true,
+    //     overlayTitle: 'Jummuah Prayer'
+    //   })
+    // }
+    // else if (moment().format('iM') === '9' &&
+    //   moment().isBetween(this.state.taraweehTime, this.state.taraweehTime.clone().add(2, 'hour'))) {
+    //   this.setState({
+    //     overlayActive: true,
+    //     overlayTitle: 'Taraweeh Prayer'
+    //   })
+    // }
+    // else {
+    this.setState({
+      overlayActive: false,
+      overlayTitle: ' ... '
+    })
+    // }
     // console.log(this.state.prayers.newtomorrow)
     // console.log(this.state.tomorrow)
   }
