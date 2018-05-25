@@ -88,7 +88,7 @@ class News extends Component {
 
     this.state.slidecount++
 
-    if (this.state.slidecount > this.state.slides.length) this.setState({ slidecount: 0 })
+    if (this.state.slidecount > (this.state.slides.length - 1)) this.setState({ slidecount: 0 })
 
     // localStorage.setItem('settings', 'koko')
     // console.log(localStorage.getItem('settings'))
