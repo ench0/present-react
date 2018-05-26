@@ -110,6 +110,7 @@ class Poster extends Component {
         <div className="Text">
           <div>{this.state.currentslide.summary}</div>
           <div>{this.state.currentslide.date}</div>
+          {/* <div className="url">{this.state.currentslide.url}</div> */}
         </div>
       </div>
     )

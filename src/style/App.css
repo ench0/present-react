@@ -82,9 +82,11 @@ h2 {
     justify-content: space-between;
 }
 .Poster .Text div {
-    padding: .5em;
+    padding: .25em;
 }
-
+.Poster .Text div.url {
+    font-size: 75%;
+}
 
 .News {
     flex:.34;

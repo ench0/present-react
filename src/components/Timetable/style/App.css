@@ -121,15 +121,15 @@ h3 {
 /* CLOCK COMPONENT */
 .timeRow {
     color: rgba(255,255,255,.75);
-    text-shadow: 0 0 10px rgba(0,0,0,.75);
+    text-shadow: 0 0 5px rgba(255,255,255,.5);
     display: flex;
     font-size: 320%;
     align-items: center;
     flex-direction: column;
 }
 .dateRow {
-    color: rgba(255,255,255,.75);
-    text-shadow: 0 0 10px rgba(0,0,0,.5);
+    color: rgba(255,255,255,.85);
+    text-shadow: 0 0 2px rgba(0,0,0,.5);
     display: flex;
     font-size: 100%;
     padding: 1em 0;
