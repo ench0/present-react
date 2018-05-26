@@ -7,15 +7,15 @@ import 'moment-timezone'
 moment.locale('en-ie')
 
 class Prayer extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       jamaahShow: true,
-      join: 'no'
+      join: 'no',
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.jamaahShow !== this.state.jamaahShow) {
       this.setState({ jamaahShow: nextProps.jamaahShow })
     }
@@ -24,41 +24,41 @@ class Prayer extends Component {
     }
   }
 
-  render () {
+  render() {
     // console.log(this.props.nextName, this.props.prayer.name)
-    let next,
-      adhan,
-      iqamah
+    let next
+    let adhan
+    let iqamah
     if (this.props.nextName === this.props.prayer.name || this.props.nextName === `${this.props.prayer.name} jamaah`) next = 'prayerRow next'; else next = 'prayerRow'
 
     if (this.state.jamaahShow && this.state.join === '1' && this.props.prayer.name === 'isha') {
-      adhan =
-        (<div className='adhanTime'>
+      adhan = (
+        <div className="adhanTime">
           after
         </div>)
-      iqamah =
-        (<div className='iqamahTime'>
+      iqamah = (
+        <div className="iqamahTime">
           maghrib
         </div>)
     } else if (this.state.jamaahShow && this.props.prayer.name !== 'shurooq') {
-      adhan =
-        (<div className='adhanTime'>
+      adhan = (
+        <div className="adhanTime">
           {this.props.prayer.time.format('H:mm')}
         </div>)
-      iqamah =
-        (<div className='iqamahTime'>
+      iqamah = (
+        <div className="iqamahTime">
           {this.props.prayer.jamaah.time.format('H:mm')}
         </div>)
     } else if (this.state.jamaahShow && this.props.prayer.name === 'shurooq') {
-      adhan =
-        (<div className='adhanTime'>
+      adhan = (
+        <div className="adhanTime">
           {this.props.prayer.time.format('H:mm')}
         </div>)
       iqamah =
-        <div className='iqamahTime' />
+        <div className="iqamahTime" />
     } else {
-      adhan =
-        (<div className='adhanTime right'>
+      adhan = (
+        <div className="adhanTime right">
           {this.props.prayer.time.format('H:mm')}
         </div>)
       iqamah = ''
@@ -66,7 +66,7 @@ class Prayer extends Component {
 
     return (
       <div className={next}>
-        <div className='prayerName'>
+        <div className="prayerName">
           {this.props.prayer.name}
         </div>
         {adhan}
@@ -76,8 +76,18 @@ class Prayer extends Component {
   }
 }
 
-Prayer.propTypes = {
-  jamaahShow: PropTypes.bool
+export default Prayer
+
+Prayer.defaultProps = {
+  jamaahShow: PropTypes.bool,
+  join: PropTypes.string,
+  nextName: PropTypes.string,
+  prayer: PropTypes.object,
 }
 
-export default Prayer
+Prayer.propTypes = {
+  jamaahShow: PropTypes.bool,
+  join: PropTypes.string,
+  nextName: PropTypes.string,
+  prayer: PropTypes.object,
+}

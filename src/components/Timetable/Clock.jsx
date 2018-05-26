@@ -8,12 +8,12 @@ import moment from 'moment-hijri'
 import mainLogo from './style/img/logo.svg'
 
 class Clock extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
       date: new Date(),
-      day: this.props.day
+      day: this.props.day,
       // time: this.props.time
     }
   }
@@ -35,7 +35,7 @@ class Clock extends Component {
   //     })
   // }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     // You don't have to do this check first, but it can help prevent an unneeded render
     if (nextProps.date !== this.state.date) {
       this.setState({ date: nextProps.date })
@@ -46,18 +46,18 @@ class Clock extends Component {
     // console.log(nextProps)
   }
 
-  render () {
+  render() {
     // var tomorrow
     // if(this.state.day.tomorrow) tomorrow = "tomorrow"; else tomorrow = "today"
 
     return (
-      <div className='Clock'>
-        <img src={mainLogo} className='logo' alt='logo' />
-        <div className='timeRow'>
+      <div className="Clock">
+        <img src={mainLogo} className="logo" alt="logo" />
+        <div className="timeRow">
           {/* {this.state.date.toLocaleTimeString()} */}
           {moment().format('H:mm:ss')}
         </div>
-        <div className='dateRow'>
+        <div className="dateRow">
           <div>{this.state.day.gregorian}</div>
           <div>{this.state.day.hijri}</div>
           {/* <div>{tomorrow}</div> */}
@@ -68,8 +68,17 @@ class Clock extends Component {
 }
 
 Clock.propTypes = {
-  date: PropTypes.func,
-  day: PropTypes.object
+
 }
 
 export default Clock
+
+Clock.defaultProps = {
+  date: PropTypes.func,
+  day: PropTypes.object,
+}
+
+Clock.propTypes = {
+  date: PropTypes.func,
+  day: PropTypes.object,
+}

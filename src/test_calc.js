@@ -1,8 +1,9 @@
+/* eslint-disable */
 import moment from 'moment-hijri'
 import momenttz from 'moment-timezone'
 
 /* JAMAAH CALC */
-function jamaahCalc (num, time, settings) {
+function jamaahCalc(num, time, settings) {
   const jamaahMethodSetting = settings.jamaahmethods[num]
   const jamaahOffsetSetting = settings.jamaahoffsets[num]
 
@@ -33,7 +34,7 @@ function jamaahCalc (num, time, settings) {
   return jamaahOffset
 }
 
-function prayersCalc (tomorrow = 0, settings, timetable, jamaahShow = true, join = '0', log = false, test = false) {
+function prayersCalc(tomorrow = 0, settings, timetable, jamaahShow = true, join = '0', log = false, test = false) {
   // DST settings
   let newtomorrow = tomorrow
   const city = 'Europe/Dublin'
@@ -63,32 +64,32 @@ function prayersCalc (tomorrow = 0, settings, timetable, jamaahShow = true, join
     name: prayer,
     time: moment({
       hour: timetable[month][date][index][0],
-      minute: timetable[month][date][index][1]
+      minute: timetable[month][date][index][1],
     }).add(dst, 'hour'),
     jamaah: {
       // num, time, /timenext/, settings {jamaahmethods, jamaahoffsets}
       offset: jamaahCalc(index, moment({ hour: timetable[month][date][index][0], minute: timetable[month][date][index][1] }), { jamaahmethods: settings.jamaahmethods, jamaahoffsets: settings.jamaahoffsets }),
       time: moment({
         hour: timetable[month][date][index][0],
-        minute: timetable[month][date][index][1]
+        minute: timetable[month][date][index][1],
       }).add(dst, 'hour')
-        .add(jamaahCalc(index, moment({ hour: timetable[month][date][index][0], minute: timetable[month][date][index][1] }), { jamaahmethods: settings.jamaahmethods, jamaahoffsets: settings.jamaahoffsets }), 'minutes')
-    }
+        .add(jamaahCalc(index, moment({ hour: timetable[month][date][index][0], minute: timetable[month][date][index][1] }), { jamaahmethods: settings.jamaahmethods, jamaahoffsets: settings.jamaahoffsets }), 'minutes'),
+    },
   }))
   prayerNames.forEach((prayer, index) => listTomorrow.push({
     name: prayer,
     time: moment({
       hour: timetable[tmonth][tdate][index][0],
-      minute: timetable[tmonth][tdate][index][1]
+      minute: timetable[tmonth][tdate][index][1],
     }).add(1, 'day').add(dst, 'hour'),
     jamaah: {
       offset: jamaahCalc(index, moment({ hour: timetable[tmonth][tdate][index][0], minute: timetable[tmonth][tdate][index][1] }), { jamaahmethods: settings.jamaahmethods, jamaahoffsets: settings.jamaahoffsets }),
       time: moment({
         hour: timetable[tmonth][tdate][index][0],
-        minute: timetable[tmonth][tdate][index][1]
+        minute: timetable[tmonth][tdate][index][1],
       }).add(1, 'day').add(dst, 'hour')
-        .add(jamaahCalc(index, moment({ hour: timetable[tmonth][tdate][index][0], minute: timetable[tmonth][tdate][index][1] }), { jamaahmethods: settings.jamaahmethods, jamaahoffsets: settings.jamaahoffsets }), 'minutes')
-    }
+        .add(jamaahCalc(index, moment({ hour: timetable[tmonth][tdate][index][0], minute: timetable[tmonth][tdate][index][1] }), { jamaahmethods: settings.jamaahmethods, jamaahoffsets: settings.jamaahoffsets }), 'minutes'),
+    },
   }))
 
   let timePeriod
@@ -105,7 +106,7 @@ function prayersCalc (tomorrow = 0, settings, timetable, jamaahShow = true, join
     list = listToday
     timePeriod = 'case 0'
   } else if (!jamaahShow) {
-    /**************************
+    /** ************************
      *     NOT JAMAAHSHOW     *
      * ********************** */
     if (moment().isBetween(listToday[0].time, listToday[1].time)) {
@@ -152,7 +153,7 @@ function prayersCalc (tomorrow = 0, settings, timetable, jamaahShow = true, join
       timePeriod = 'case N6'
     }
   } else {
-    /**************************
+    /** ************************
      *       JAMAAHSHOW       *
      * ********************** */
     if (moment().isBetween(listToday[0].time, listToday[0].jamaah.time)) {
@@ -245,11 +246,11 @@ function prayersCalc (tomorrow = 0, settings, timetable, jamaahShow = true, join
 
   if (test) return 'Success!'
   return {
-    list, current, next, newtomorrow
+    list, current, next, newtomorrow,
   }
 }
 
-function dayCalc (tomorrow = 0, settings = { hijrioffset: 0 }, test = false) {
+function dayCalc(tomorrow = 0, settings = { hijrioffset: 0 }, test = false) {
   const gregorian = moment().add(tomorrow, 'day').format('dddd, D MMMM YYYY')
   const hijri = moment().add((parseInt(settings.hijrioffset, 10) + parseInt(tomorrow, 10)), 'day').format('iD iMMMM iYYYY')
   let ramadanCountdown

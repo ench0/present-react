@@ -7,16 +7,16 @@ import wifiOn from './style/img/wifiOn.svg'
 import wifiOff from './style/img/wifiOff.svg'
 
 class Footer extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       settings: { labels: { jummuah: 'Jummuah' }, jummuahtime: '13:10', updated: '' },
       day: {},
-      refreshed: this.props.refreshed
+      refreshed: this.props.refreshed,
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.settings !== this.state.settings && nextProps.settings !== null) {
       this.setState({ settings: nextProps.settings })
     }
@@ -28,32 +28,32 @@ class Footer extends Component {
     }
   }
 
-  render () {
+  render() {
     // console.log('!!!', this.state.settings)
     let ramadan
     if (this.state.day.ramadanCountdown) {
-      ramadan = <div className='left'>{this.state.day.ramadanCountdown} to Ramadan</div>
+      ramadan = <div className="left">{this.state.day.ramadanCountdown} to Ramadan</div>
     }
     let taraweeh
-    if (moment().format('iM') === '9') taraweeh = <div className='left'>Taraweeh {this.props.taraweehTime.format('H:mm')}</div>
+    if (moment().format('iM') === '9') taraweeh = <div className="left">Taraweeh {this.props.taraweehTime.format('H:mm')}</div>
 
     return (
-      <div className='Footer'>
-        <div className='left'>{this.state.settings.labels.jummuah} {this.state.settings.jummuahtime}</div>
+      <div className="Footer">
+        <div className="left">{this.state.settings.labels.jummuah} {this.state.settings.jummuahtime}</div>
         {ramadan}
         {taraweeh}
-        <div className='center'>
+        <div className="center">
           <Offline>
-            <img src={wifiOff} className='wifiOff' alt='wifiOff' />
+            <img src={wifiOff} className="wifiOff" alt="wifiOff" />
           </Offline>
           <Online>
-            <img src={wifiOn} className='wifiOn' alt='wifiOn' />
+            <img src={wifiOn} className="wifiOn" alt="wifiOn" />
           </Online>
         </div>
-        <div className='right'>
+        <div className="right">
           Refreshed {this.state.refreshed}
         </div>
-        <div className='right'>
+        <div className="right">
           Updated {moment(this.state.settings.updated * 1000).format('DD/MM/YY')}
         </div>
       </div>
@@ -61,8 +61,18 @@ class Footer extends Component {
   }
 }
 
-Footer.propTypes = {
-  settings: PropTypes.object
+export default Footer
+
+Footer.defaultProps = {
+  refreshed: PropTypes.string,
+  day: PropTypes.object,
+  settings: PropTypes.object,
+  taraweehTime: PropTypes.object,
 }
 
-export default Footer
+Footer.propTypes = {
+  refreshed: PropTypes.string,
+  day: PropTypes.object,
+  settings: PropTypes.object,
+  taraweehTime: PropTypes.object,
+}

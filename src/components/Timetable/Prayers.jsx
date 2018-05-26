@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import moment from 'moment-hijri'
 
@@ -9,20 +10,20 @@ moment.locale('en-ie')
 // console.log(prayers)
 
 class Timetable extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
-      timetable: [],
-      tomorrow: 0,
-      dst: 0,
+      // timetable: [],
+      // tomorrow: 0,
+      // dst: 0,
       prayers: { next: { time: moment(), name: '' }, current: { time: moment(), name: '' }, list: [] },
       jamaahShow: true,
-      join: 'no'
+      join: 'no',
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.prayers !== this.state.prayers) {
       this.setState({ prayers: nextProps.prayers })
     }
@@ -34,7 +35,7 @@ class Timetable extends Component {
     }
   }
 
-  renderPrayers () {
+  renderPrayers() {
     return (
       <div>
         {
@@ -45,28 +46,27 @@ class Timetable extends Component {
               nextName={this.state.prayers.next.name}
               jamaahShow={this.state.jamaahShow}
               join={this.state.join}
-            />)
-          )
+            />))
         }
       </div>
     )
   }
 
-  render () {
+  render() {
     let adhan
     let iqamah
     if (this.state.jamaahShow) {
-      adhan = <div className='adhanTime'>Adhan</div>
-      iqamah = <div className='iqamahTime'>Iqamah</div>
+      adhan = <div className="adhanTime">Adhan</div>
+      iqamah = <div className="iqamahTime">Iqamah</div>
     } else {
-      adhan = <div className='adhanTime right'>Adhan</div>
+      adhan = <div className="adhanTime right">Adhan</div>
       iqamah = ''
     }
 
     return (
-      <div className='Prayers'>
-        <div className='prayerHeader'>
-          <div className='prayerName'>Prayer</div>
+      <div className="Prayers">
+        <div className="prayerHeader">
+          <div className="prayerName">Prayer</div>
           {adhan}
           {iqamah}
 
@@ -78,3 +78,15 @@ class Timetable extends Component {
 }
 
 export default Timetable
+
+Timetable.defaultProps = {
+  jamaahShow: PropTypes.bool,
+  join: PropTypes.string,
+  prayers: PropTypes.object,
+}
+
+Timetable.propTypes = {
+  jamaahShow: PropTypes.bool,
+  join: PropTypes.string,
+  prayers: PropTypes.object,
+}

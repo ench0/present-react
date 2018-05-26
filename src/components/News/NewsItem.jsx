@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class NewsItem extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     // var tomorrow = 0
     this.state = {
@@ -10,28 +11,28 @@ class NewsItem extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // this.getTimes();
   }
 
-  componentWillUnmount () {
+  // componentWillReceiveProps(nextProps) {
+  //   // // console.log(nextProps)
+  //   // if (nextProps.jamaahShow !== this.state.jamaahShow) {
+  //   //   this.setState({ jamaahShow: nextProps.jamaahShow })
+  //   // }
+  // }
+
+  componentWillUnmount() {
     // clearInterval(this.timerID)
   }
 
-  componentWillReceiveProps (nextProps) {
-    // // console.log(nextProps)
-    // if (nextProps.jamaahShow !== this.state.jamaahShow) {
-    //   this.setState({ jamaahShow: nextProps.jamaahShow })
-    // }
-  }
-
-  render () {
+  render() {
     return (
-      <div className='NewsItem'>
-        <div className='column1'>
-          <img src={'https://islamireland.ie/' + this.props.news.img} />
+      <div className="NewsItem">
+        <div className="column1">
+          <img src={`https://islamireland.ie/${this.props.news.img}`} alt="" />
         </div>
-        <div className='column2'>
+        <div className="column2">
           <h2>{this.props.news.title}</h2>
           <div>{this.props.news.summary}...</div>
         </div>
@@ -41,3 +42,11 @@ class NewsItem extends Component {
 }
 
 export default NewsItem
+
+NewsItem.defaultProps = {
+  news: PropTypes.object,
+}
+
+NewsItem.propTypes = {
+  news: PropTypes.object,
+}

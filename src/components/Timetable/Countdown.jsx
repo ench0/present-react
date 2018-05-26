@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import moment from 'moment-hijri'
 
 class Countdown extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
       prayers: { next: { time: moment(), name: '' }, current: { time: moment(), name: '' }, list: [] },
-      countdown: '--:--:--'
+      countdown: '--:--:--',
     }
   }
 
@@ -24,7 +24,7 @@ class Countdown extends Component {
   //     clearInterval(this.countdownID)
   // }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     let countdown
 
     if (nextProps.prayers !== this.state.prayers) {
@@ -48,12 +48,12 @@ class Countdown extends Component {
     */
     appendZero = (unit) => {
       if (unit < 10) return `0${unit}`
-      else return `${unit}`
+      return `${unit}`
     }
 
-    render () {
+    render() {
       return (
-        <div className='Countdown'>
+        <div className="Countdown">
           <div>{this.state.prayers.next.name}</div>
           <div>{this.state.countdown}</div>
         </div>
@@ -61,9 +61,13 @@ class Countdown extends Component {
     }
 }
 
-Countdown.propTypes = {
-  prayers: PropTypes.any,
-  countdown: PropTypes.string
-}
 
 export default Countdown
+
+Countdown.defaultProps = {
+  prayers: PropTypes.any,
+}
+
+Countdown.propTypes = {
+  prayers: PropTypes.any,
+}

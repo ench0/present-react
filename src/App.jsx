@@ -11,7 +11,7 @@ import News from './components/News'
 import Timetable from './components/Timetable'
 
 class App extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -19,27 +19,27 @@ class App extends Component {
     }
   }
 
-  /**********************************************************************
+  /** ********************************************************************
   STATES
-  **********************************************************************/
-  async componentWillMount () {
+  ********************************************************************* */
+  async componentWillMount() {
     // this.setState({
     // })
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
     document.title = 'ICCI Presentation'
   }
 
-  /**********************************************************************
+  /** ********************************************************************
   RENDERING
-  **********************************************************************/
-  render () {
+  ********************************************************************* */
+  render() {
     return (
-      <div className='App'>
+      <div className="App">
         <Poster />
         <News />
-        <Timetable />
+        <Timetable refresh={60} />
         {/* <Overlay settings={this.state.settings} day={this.state.day} overlayTitle={this.state.overlayTitle} overlayActive={this.state.overlayActive} /> */}
 
       </div>

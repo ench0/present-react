@@ -7,30 +7,27 @@ import PropTypes from 'prop-types'
 // import settings from '../settings.json'
 
 class Overlay extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
       settings: this.props.settings,
       day: this.props.day,
       //   overlayActive: false,
-      overlayTitle: ' ... '
+      overlayTitle: ' ... ',
     }
   }
 
-  componentWillMount () {
+  componentWillMount() {
     // this.setState({
     //   overlayActive: false
     // })
   }
 
-  componentDidMount () {
+  componentDidMount() {
   }
 
-  componentWillUnmount () {
-  }
-
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.settings !== this.state.settings) {
       this.setState({ settings: nextProps.settings, day: nextProps.day })
     }
@@ -44,14 +41,17 @@ class Overlay extends Component {
     // console.log(this.state.overlayActive)
   }
 
-  render () {
+  componentWillUnmount() {
+  }
+
+  render() {
     // let overlayActive
     // console.log(this.state.overlayActive)
     // if (this.state.overlayActive) overlayActive = 'Overlay overlayActive'
     // else overlayActive = 'Overlay'
     return (
       // <div className={overlayActive}>
-      <div className={'Overlay overlayActive'}>
+      <div className="Overlay overlayActive">
         <div>
           {this.state.day.gregorian}
         </div>
@@ -60,18 +60,21 @@ class Overlay extends Component {
         </div>
         <h1>{this.state.overlayTitle}</h1>
         {/* <div>{this.state.settings.body}</div> */}
-        {/* <marquee behavior="scroll" direction="up" className="marquee" scrolldelay="300">{this.state.settings.body}</marquee> */}
-
       </div>
     )
   }
 }
 
+export default Overlay
+
+Overlay.defaultProps = {
+  settings: PropTypes.object,
+  day: PropTypes.object,
+  overlayTitle: PropTypes.string,
+}
+
 Overlay.propTypes = {
   settings: PropTypes.object,
   day: PropTypes.object,
-  title: PropTypes.string,
-  overlayActive: PropTypes.bool
+  overlayTitle: PropTypes.string,
 }
-
-export default Overlay

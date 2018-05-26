@@ -9,47 +9,51 @@ import '../../style/App.css'
 // import Overlay from './components/Overlay'
 
 class Poster extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
-      newsposter: [{ img: '', title: '', summary: '', html: '', date: '' }],
+      newsposter: [{
+        img: '', title: '', summary: '', html: '', date: '',
+      }],
       slidecount: 0,
-      currentslide: { img: '', title: '', summary: '', html: '', date: '' },
-      refresh: 60
+      currentslide: {
+        img: '', title: '', summary: '', html: '', date: '',
+      },
+      refresh: 60,
     }
   }
 
-  /**********************************************************************
+  /** ********************************************************************
   STATES
-  **********************************************************************/
-  async componentWillMount () {
+  ********************************************************************* */
+  async componentWillMount() {
     await this.update()
     await this.tick()
     // this.setState({
     // })
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
-      1000 * 15
+      1000 * 15,
     )
     this.updateID = setInterval(
       () => this.update(),
-      this.state.refresh * 60 * 1000
+      this.state.refresh * 60 * 1000,
 
     )
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     clearInterval(this.timerID)
     clearInterval(this.updateID)
   }
-  /**********************************************************************
+  /** ********************************************************************
   SCRIPTS
-  **********************************************************************/
-  async update () {
+  ********************************************************************* */
+  async update() {
     if (this.state.refresh !== 0) {
       try {
         const res = await fetch('https://islamireland.ie/api/', { mode: 'cors' })
@@ -59,7 +63,7 @@ class Poster extends Component {
         await this.setState({ newsposter })
         await localStorage.setItem('newsposter', JSON.stringify(newsposter))
 
-        let d = new Date()
+        const d = new Date()
         console.log('refreshed Poster comp', `${d.getHours()}:${this.prepend(d.getMinutes())}`)
       } catch (error) {
         console.log(error)
@@ -67,12 +71,12 @@ class Poster extends Component {
     }
   }
 
-  prepend (input) {
-    if (input < 10) return '0' + input
-    else return input
+  prepend(input) {
+    if (input < 10) return `0${input}`
+    return input
   }
 
-  tick () {
+  tick() {
     this.setState({ currentslide: this.state.newsposter[this.state.slidecount] })
 
     this.state.slidecount++
@@ -87,23 +91,23 @@ class Poster extends Component {
     // console.log(koko[0])
   }
 
-  /**********************************************************************
+  /** ********************************************************************
   RENDERING
-  **********************************************************************/
-  render () {
-    var styles = {
+  ********************************************************************* */
+  render() {
+    const styles = {
       backgroundImage: `url(https://islamireland.ie/${this.state.currentslide.img})`,
       opacity: 1,
-      transition: 'all 1s ease'
+      transition: 'all 1s ease',
     }
     // console.log(this.state)
     return (
-      <div className='Poster'>
-        <div className='Image' style={styles}>
+      <div className="Poster">
+        <div className="Image" style={styles}>
           {/* <img src={'https://islamireland.ie/' + this.state.currentslide.img} /> */}
         </div>
-        <div className='Title'>{this.state.currentslide.title}</div>
-        <div className='Text'>
+        <div className="Title">{this.state.currentslide.title}</div>
+        <div className="Text">
           <div>{this.state.currentslide.summary}</div>
           <div>{this.state.currentslide.date}</div>
         </div>
