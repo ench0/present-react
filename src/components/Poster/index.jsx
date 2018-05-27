@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 // import moment from 'moment-hijri'
 // import momenttz from 'moment-timezone'
 // import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { FaCalendar } from 'react-icons/lib/fa'
+import { FaCalendar, FaMousePointer } from 'react-icons/lib/fa'
 
 import '../../style/normalize.css'
 import '../../style/App.css'
@@ -105,41 +105,72 @@ class Poster extends Component {
   ********************************************************************* */
   render() {
     const styles = {
-      backgroundImage: `url(https://islamireland.ie/${this.state.currentslide.img})`,
-      opacity: 1,
-      transition: 'all 1s ease',
+      poster: {
+        backgroundImage: `url(https://islamireland.ie/${this.state.currentslide.img})`,
+        opacity: 1,
+        transition: 'all 1s ease',
+      },
+      text: {
+        opacity: 1,
+        transition: 'all 1s ease',
+      },
     }
     // console.log(this.state)
     return (
       <div className="Poster">
-        <div className="Image" style={styles}>
+        <div className="Image" style={styles.poster}>
           {/* <img src={'https://islamireland.ie/' + this.state.currentslide.img} /> */}
         </div>
-        <div className="Title">{this.state.currentslide.title}</div>
-        <div className="Text">
+        <div className="Title" style={styles.text}>
+          {this.state.currentslide.title}
+        </div>
+        <div className="Text" style={styles.text}>
           <div>{this.state.currentslide.summary}</div>
           <div className="date">
             {/* <FontAwesomeIcon icon="coffee" /> */}
             <div
               style={{
-                width: '25%',
+                width: '250px' /* 170 */,
                 textAlign: 'left',
                 alignSelf: 'flex-start',
+                paddingLeft: '10px',
+                // flexWrap: 'nowrap',
+                // whiteSpace: 'nowrap',
               }}
             >
-              <FaCalendar color="#333" size={16} style={{ paddingBottom: '5px' }} /> {this.state.currentslide.date}
+              <FaCalendar
+                color="#333"
+                size={16}
+                style={{
+                  paddingRight: 0,
+                  /* paddingBottom: '5px' */
+                }}
+              />{' '}
+              {this.state.currentslide.date}
             </div>
             <div
               style={{
-                width: '70%',
+                width: '250px' /* 400 */,
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 textAlign: 'right',
                 alignSelf: 'flex-end',
+                paddingLeft: 0,
+                paddingRight: '10px',
               }}
             >
-              {this.state.currentslide.url}
+              <FaMousePointer
+                color="#333"
+                size={16}
+                style={
+                  {
+                    /* paddingBottom: '5px' */
+                  }
+                }
+              />{' '}
+              https://islamireland.ie/news/
+              {/* {this.state.currentslide.url} */}
             </div>
           </div>
           {/* <div className="url">{this.state.currentslide.url}</div> */}
