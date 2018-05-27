@@ -35,14 +35,13 @@ class Footer extends Component {
       ramadan = <div className="left">{this.state.day.ramadanCountdown} to Ramadan</div>
     }
     let taraweeh
-    if (moment().format('iM') === '9') taraweeh = <div className="left">Taraweeh {this.props.taraweehTime.format('H:mm')}</div>
+    if (moment().format('iM') === '9') {
+      taraweeh = <div className="left">Taraweeh {this.props.taraweehTime.format('H:mm')}</div>
+    }
 
     return (
       <div className="Footer">
-        <div className="left">{this.state.settings.labels.jummuah} {this.state.settings.jummuahtime}</div>
-        {ramadan}
-        {taraweeh}
-        <div className="center">
+        <div className="left">
           <Offline>
             <img src={wifiOff} className="wifiOff" alt="wifiOff" />
           </Offline>
@@ -50,12 +49,13 @@ class Footer extends Component {
             <img src={wifiOn} className="wifiOn" alt="wifiOn" />
           </Online>
         </div>
-        <div className="right">
-          Refreshed {this.state.refreshed}
+        <div className="center">
+          {this.state.settings.labels.jummuah} {this.state.settings.jummuahtime}
         </div>
-        <div className="right">
-          Updated {moment(this.state.settings.updated * 1000).format('DD/MM/YY')}
-        </div>
+        {ramadan}
+        {taraweeh}
+        <div className="center">Refreshed {this.state.refreshed}</div>
+        <div className="right">Updated {moment(this.state.settings.updated * 1000).format('DD/MM/YY')}</div>
       </div>
     )
   }

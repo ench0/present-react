@@ -19,19 +19,21 @@ class Message extends Component {
   }
 
   render() {
+    let english
+    let arabic
+    if (this.state.settings.text.en) english = <div>{this.state.settings.text.en}</div>
+    else english = ''
+    if (this.state.settings.text.ar) arabic = <div>{this.state.settings.text.ar}</div>
+    else arabic = ''
+
     return (
-      <div className="Message" ref={divElement => this.divElement = divElement}>
+      <div className="Message" ref={divElement => (this.divElement = divElement)}>
         <h3>
           {this.state.settings.announcement}
           {/* {this.state.height} */}
         </h3>
-
-        <div>
-          {this.state.settings.text.en}
-        </div>
-        <div>
-          {this.state.settings.text.ar}
-        </div>
+        {english}
+        {arabic}
       </div>
     )
   }

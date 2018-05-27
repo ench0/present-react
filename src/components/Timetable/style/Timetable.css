@@ -72,7 +72,7 @@ h3 {
 .Countdown {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     flex: .075;
@@ -109,7 +109,7 @@ h3 {
     flex: .025;
     align-items: center;
     border-top: 1px solid rgba(255,255,255,.5);
-    padding: .25em 0;
+    /* padding: .25em 0; */
 }
 
 
@@ -177,7 +177,7 @@ h3 {
 
 .logo {
       height: 4em;
-      padding-bottom: 1em;
+      padding-bottom: 2em;
  }
 .wifiOff {
     height: 1em;
