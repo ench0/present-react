@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 // import moment from 'moment-hijri'
 // import momenttz from 'moment-timezone'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faUser, faCoffee } from '@fortawesome/fontawesome-free-solid/faCoffee'
 
 import '../../style/normalize.css'
 import '../../style/App.css'
@@ -109,7 +111,12 @@ class Poster extends Component {
         <div className="Title">{this.state.currentslide.title}</div>
         <div className="Text">
           <div>{this.state.currentslide.summary}</div>
-          <div>{this.state.currentslide.date}</div>
+          <div className="date">
+            {/* <FontAwesomeIcon icon="coffee" /> */}
+            <FontAwesomeIcon icon={faCoffee} /> {this.state.currentslide.date}
+            <FontAwesomeIcon icon="check-square" />
+    Favorite beverage: <FontAwesomeIcon icon="coffee" />
+          </div>
           {/* <div className="url">{this.state.currentslide.url}</div> */}
         </div>
       </div>

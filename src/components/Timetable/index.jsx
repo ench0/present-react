@@ -8,7 +8,7 @@ import { prayersCalc, dayCalc } from 'prayer-timetable-lib'
 // import { prayersCalc, dayCalc } from './test_calc' // for testing purposes
 
 import './style/normalize.css'
-import './style/App.css'
+import './style/Timetable.css'
 
 import Overlay from './Overlay'
 import Clock from './Clock'

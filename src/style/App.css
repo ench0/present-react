@@ -70,6 +70,9 @@ h2 {
     text-align: center;
     align-items: center;
     justify-content: center;
+    border-left: 1px solid rgba(255,255,255,.5);
+    border-right: 1px solid rgba(255,255,255,.5);
+    background: rgba(255,255,255,.25);
 }
 .Poster .Text {
     flex: .15;
@@ -80,12 +83,18 @@ h2 {
     text-align: center;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid rgba(255,255,255,.5);
+    border-top: none;
+    background: rgba(255,255,255,.25);
 }
 .Poster .Text div {
     padding: .25em;
 }
 .Poster .Text div.url {
     font-size: 75%;
+}
+.Poster .Text div.date {
+    font-size: 85%;
 }
 
 .News {
