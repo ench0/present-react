@@ -1,0 +1,16 @@
+{
+  "semi": false,
+  "printWidth": 120,
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "trailingComma": "es5",
+  "parser": "flow",
+  "overrides": [
+    {
+      "files": "*.test.js",
+      "options": {
+        "semi": true
+      }
+    }
+  ]
+}

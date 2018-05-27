@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 // import moment from 'moment-hijri'
 // import momenttz from 'moment-timezone'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faUser, faCoffee } from '@fortawesome/fontawesome-free-solid/faCoffee'
+// import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { FaCalendar } from 'react-icons/lib/fa'
 
 import '../../style/normalize.css'
 import '../../style/App.css'
@@ -15,12 +15,22 @@ class Poster extends Component {
     super(props)
 
     this.state = {
-      newsposter: [{
-        img: '', title: '', summary: '', html: '', date: '',
-      }],
+      newsposter: [
+        {
+          img: '',
+          title: '',
+          summary: '',
+          html: '',
+          date: '',
+        },
+      ],
       slidecount: 0,
       currentslide: {
-        img: '', title: '', summary: '', html: '', date: '',
+        img: '',
+        title: '',
+        summary: '',
+        html: '',
+        date: '',
       },
       refresh: 60,
     }
@@ -37,15 +47,8 @@ class Poster extends Component {
   }
 
   async componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000 * 15,
-    )
-    this.updateID = setInterval(
-      () => this.update(),
-      this.state.refresh * 60 * 1000,
-
-    )
+    this.timerID = setInterval(() => this.tick(), 1000 * 15)
+    this.updateID = setInterval(() => this.update(), this.state.refresh * 60 * 1000)
   }
 
   componentWillUnmount() {
@@ -58,7 +61,9 @@ class Poster extends Component {
   async update() {
     if (this.state.refresh !== 0) {
       try {
-        const res = await fetch('https://islamireland.ie/api/', { mode: 'cors' })
+        const res = await fetch('https://islamireland.ie/api/', {
+          mode: 'cors',
+        })
         // set vars
         const { newsposter } = await res.json()
         // update states and storage
@@ -79,7 +84,9 @@ class Poster extends Component {
   }
 
   tick() {
-    this.setState({ currentslide: this.state.newsposter[this.state.slidecount] })
+    this.setState({
+      currentslide: this.state.newsposter[this.state.slidecount],
+    })
 
     this.state.slidecount++
 
@@ -113,9 +120,27 @@ class Poster extends Component {
           <div>{this.state.currentslide.summary}</div>
           <div className="date">
             {/* <FontAwesomeIcon icon="coffee" /> */}
-            <FontAwesomeIcon icon={faCoffee} /> {this.state.currentslide.date}
-            <FontAwesomeIcon icon="check-square" />
-    Favorite beverage: <FontAwesomeIcon icon="coffee" />
+            <div
+              style={{
+                width: '25%',
+                textAlign: 'left',
+                alignSelf: 'flex-start',
+              }}
+            >
+              <FaCalendar color="#333" size={16} style={{ paddingBottom: '5px' }} /> {this.state.currentslide.date}
+            </div>
+            <div
+              style={{
+                width: '70%',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                textAlign: 'right',
+                alignSelf: 'flex-end',
+              }}
+            >
+              {this.state.currentslide.url}
+            </div>
           </div>
           {/* <div className="url">{this.state.currentslide.url}</div> */}
         </div>

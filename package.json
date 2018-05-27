@@ -30,9 +30,6 @@
     "test": "neutrino test"
   },
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.8",
-    "@fortawesome/fontawesome-free-solid": "^5.0.13",
-    "@fortawesome/react-fontawesome": "^0.0.20",
     "@neutrinojs/airbnb-base": "^8.2.2",
     "@neutrinojs/standardjs": "^8.2.2",
     "moment": "^2.22.0",
@@ -43,7 +40,8 @@
     "react": "^16.3.1",
     "react-detect-offline": "^2.0.1",
     "react-dom": "^16.3.1",
-    "react-hot-loader": "^4.0.1"
+    "react-hot-loader": "^4.0.1",
+    "react-icons": "^2.2.7"
   },
   "devDependencies": {
     "@neutrinojs/airbnb": "^8.2.2",
